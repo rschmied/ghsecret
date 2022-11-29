@@ -1,3 +1,5 @@
+[![CodeQL](https://github.com/rschmied/ghsecret/actions/workflows/codeql-analysis.yml/badge.svg?branch=dev)](https://github.com/rschmied/ghsecret/actions/workflows/codeql-analysis.yml)
+
 # README.md
 
 This tool creates [libsodium](https://github.com/jedisct1/libsodium) compatible [encrypted secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-an-environment) for use with the Github
@@ -73,7 +75,7 @@ REPO="rschmied/ghsecret"
 read -d' ' GH_KEY_ID GH_KEY <<< "$(gh api /repos/$REPO/actions/secrets/public-key | jq -r '.|.key_id, .key')"
 
 # make them visible to the ghsecret tool
-export GH_KEY GH_KEY_ID TUNNEL
+export GH_KEY GH_KEY_ID
 
 # lookup the pypi token in the Gnome key-chain and set the it in the
 # repository so that it can be consumed by a PyPI publish workflow.

@@ -6,7 +6,7 @@ REPO="rschmied/ghsecret"
 read -d' ' GH_KEY_ID GH_KEY <<< "$(gh api /repos/$REPO/actions/secrets/public-key | jq -r '.|.key_id, .key')"
 
 # make them visible to the ghsecret tool
-export GH_KEY GH_KEY_ID TUNNEL
+export GH_KEY GH_KEY_ID
 
 if [ -z $1 ]; then
     echo "adding secrets"
@@ -14,7 +14,7 @@ if [ -z $1 ]; then
         ghsecret | \
         gh api -XPUT /repos/$REPO/actions/secrets/GPG_PASSPHRASE --input -
 
-    echo $GPG_PRIVATE_KEY | \
+    gpg --armor --export $GPG_PRIVATE_KEY | \
         ghsecret | \
         gh api -XPUT /repos/$REPO/actions/secrets/GPG_PRIVATE_KEY --input -
 else
