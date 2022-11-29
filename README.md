@@ -1,4 +1,4 @@
-[![CodeQL](https://github.com/rschmied/ghsecret/actions/workflows/codeql-analysis.yml/badge.svg?branch=dev)](https://github.com/rschmied/ghsecret/actions/workflows/codeql-analysis.yml)
+[![CodeQL](https://github.com/rschmied/ghsecret/actions/workflows/codeql-analysis.yml/badge.svg?branch=main)](https://github.com/rschmied/ghsecret/actions/workflows/codeql-analysis.yml)
 
 # README.md
 

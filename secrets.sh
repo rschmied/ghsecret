@@ -14,7 +14,7 @@ if [ -z $1 ]; then
         ghsecret | \
         gh api -XPUT /repos/$REPO/actions/secrets/GPG_PASSPHRASE --input -
 
-    gpg --armor --export $GPG_PRIVATE_KEY | \
+    gpg --armor --export-secret-keys $GPG_PRIVATE_KEY | \
         ghsecret | \
         gh api -XPUT /repos/$REPO/actions/secrets/GPG_PRIVATE_KEY --input -
 else
