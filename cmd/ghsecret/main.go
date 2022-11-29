@@ -20,6 +20,15 @@ const (
 	GH_KEY_ID string = "GH_KEY_ID"
 )
 
+var (
+	// these will be set by the goreleaser configuration
+	// to appropriate values for the compiled binary
+	version string = "dev"
+
+	// goreleaser can also pass the specific commit if you want
+	// commit string = ""
+)
+
 type Secret struct {
 	KeyID string `json:"key_id"`
 	Value string `json:"encrypted_value"`
@@ -29,6 +38,7 @@ func main() {
 	flag.Usage = func() {
 		cmd := filepath.Base(os.Args[0])
 		fmt.Printf("%s [-key ENV_NAME][-key-id ENV_NAME] [value]\n\n", cmd)
+		fmt.Printf("Version: %s\n\n", version)
 		fmt.Println("Encrypts the given value or stdin if no value argument is")
 		fmt.Println("provided using the key stored in GH_KEY with the key ID")
 		fmt.Println("GH_KEY_ID. The result is a JSON object that can be consumed")

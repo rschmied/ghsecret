@@ -78,8 +78,8 @@ export GH_KEY GH_KEY_ID TUNNEL
 # lookup the pypi token in the Gnome key-chain and set the it in the
 # repository so that it can be consumed by a PyPI publish workflow.
 secret-tool lookup token pypi | \
-	ghsecret | \
-	gh api -XPUT /repos/$REPO/actions/secrets/PYPI_API_TOKEN --input -
+ ghsecret | \
+ gh api -XPUT /repos/$REPO/actions/secrets/PYPI_API_TOKEN --input -
 ```
 
 **Note:** Using `gh api -XDELETE /repos/$REPO/actions/secrets/PYPI_API_TOKEN` allows you to remove the token from Github again.
