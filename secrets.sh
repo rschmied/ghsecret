@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+
+GPG_PASSPHRASE
+GPG_PRIVATE_KEY
