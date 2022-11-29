@@ -9,13 +9,16 @@ read -d' ' GH_KEY_ID GH_KEY <<< "$(gh api /repos/$REPO/actions/secrets/public-ke
 export GH_KEY GH_KEY_ID TUNNEL
 
 if [ -z $1 ]; then
+    echo "adding secrets"
     secret-tool lookup ghgpgkey value | \
         ghsecret | \
         gh api -XPUT /repos/$REPO/actions/secrets/GPG_PASSPHRASE --input -
 
     echo $GPG_PRIVATE_KEY | \
+        ghsecret | \
         gh api -XPUT /repos/$REPO/actions/secrets/GPG_PRIVATE_KEY --input -
 else
-        gh api -XPUT /repos/$REPO/actions/secrets/GPG_PASSPHRASE
-        gh api -XDELETE /repos/$REPO/actions/secrets/GPG_PRIVATE_KEY
+    echo "removing secrets"
+    gh api -XDELETE /repos/$REPO/actions/secrets/GPG_PASSPHRASE
+    gh api -XDELETE /repos/$REPO/actions/secrets/GPG_PRIVATE_KEY
 fi

@@ -50,7 +50,7 @@ $ secret-tool lookup dc01admin secret | ghsecret
 $
 ```
 
-See [`tunnel.sh`](https://github.com/CiscoDevNet/terraform-provider-cml2/blob/main/tunnel.sh) for a more complex usage example using ngrok and tmux.
+Also see the [`secrets.sh`](secrets.sh) script in this repo for a more elaborate example.
 
 ## Prerequisites
 

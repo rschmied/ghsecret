@@ -70,7 +70,6 @@ func main() {
 	}
 
 	var value []byte
-	log.Println(flag.NArg())
 	switch flag.NArg() {
 	case 0:
 		value, err = io.ReadAll(io.Reader(os.Stdin))
